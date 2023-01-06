@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const doubtsroutes = require('./routes/doubts');
 const solutionsroutes = require('./routes/solutions');
 const userRoutes = require('./routes/users');
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        credentials: true
+    })
+)
 
 app.use(express.json());
 
@@ -16,15 +22,7 @@ app.use('/api/users', userRoutes);
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(process.env.PORT, () =>{
-           const server = console.log(`Connected to DB and server started on port 5000`);
-           const io = require('socket.io')(server, {
-            cors:{
-                origin: 'http://localhost:3000'
-            }
-           });
-           io.on('connection', () => {
-            console.log('Connected to socket.io');
-           })
+           console.log(`Connected to DB and server started on port 5000`);
         })
     })
     .catch((error) => {
