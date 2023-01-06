@@ -1,0 +1,48 @@
+.apptitle {
+  align-self: stretch;
+  position: relative;
+  font-weight: 600;
+}
+.leftsidebar,
+.rightsidebar {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.leftsidebar {
+  flex: 1;
+  padding: 10px;
+  align-items: flex-start;
+  gap: 10px;
+}
+.rightsidebar {
+  align-items: center;
+}
+.content,
+.loginpage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.content {
+  align-self: stretch;
+  flex: 1;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+.loginpage {
+  position: relative;
+  width: 100%;
+  height: 905px;
+  justify-content: flex-end;
+  background-image: url(../../public/loginpage@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  text-align: left;
+  font-size: 24px;
+  color: #fff;
+  font-family: Quicksand;
+}

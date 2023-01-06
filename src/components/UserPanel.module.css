@@ -1,0 +1,25 @@
+.unreadsolutionslabel,
+.username {
+  align-self: stretch;
+  position: relative;
+}
+.unreadsolutionslabel {
+  font-size: 16px;
+  font-weight: 600;
+}
+.userpanel {
+  align-self: stretch;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #000;
+  font-family: Quicksand;
+}

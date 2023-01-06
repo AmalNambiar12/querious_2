@@ -1,0 +1,26 @@
+.headline {
+  align-self: stretch;
+  position: relative;
+}
+.buttonbar,
+.doubtbox {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.doubtbox {
+  align-self: stretch;
+  border-radius: 15px;
+  background-color: #fff;
+  flex-direction: column;
+  padding: 15px;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  font-size: 16px;
+  color: #000;
+  font-family: Quicksand;
+}

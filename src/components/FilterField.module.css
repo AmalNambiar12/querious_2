@@ -1,0 +1,13 @@
+.filtertextbox {
+  align-self: stretch;
+}
+.titlefield {
+  width: 781px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: center;
+}

@@ -1,0 +1,49 @@
+.logoIcon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.companyname {
+  position: relative;
+  font-weight: 600;
+}
+.signature {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.currentroom {
+  position: relative;
+  font-size: 20px;
+  font-family: Quicksand;
+}
+.navbar,
+.navbarbuttons {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.navbarbuttons {
+  padding: 0 10px;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.navbar {
+  align-self: stretch;
+  background-color: #334756;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 28px;
+  color: #fff;
+  font-family: Lato;
+}
