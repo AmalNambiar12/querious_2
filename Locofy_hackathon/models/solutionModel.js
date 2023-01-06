@@ -7,7 +7,8 @@ const solutionSchema = new Schema({
     userID: {type: Number, required: true},
     date: {type: Date, default: Date.now},
     roomID: {type: Number, required: true},
-    doubtID: {type: Number, required: true}
+    doubtID: {type: Number, required: true},
+    image: {type: String}
 });
 
 

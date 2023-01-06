@@ -10,7 +10,8 @@ const doubtSchema = new Schema({
     subtopic: {type: String, required: true},
     date: {type: Date, default: Date.now},
     roomID: {type: Number, required: true},
-    doubtID: {type: Number, required: true}
+    doubtID: {type: Number, required: true},
+    image: {type: String}
 });
 
 doubtSchema.index({roomID: 1, doubtID: 1}, {unique: true});

@@ -16,13 +16,13 @@ router.get('/:roomID', async (req, res) =>{
 
 router.post('/:roomID', async (req, res) => {
     //post the doubt in the room
-    const {title, body, username, topic, subtopic} = req.body;
+    const {title, body, username, topic, subtopic, image} = req.body;
     const roomID = req.params.roomID;
     const user = await User.findOne({username});
     try{
         const roomDoubts = await Doubt.find({roomID: roomID});
         const doubtID = roomDoubts.length + 1;
-        const doubt = await Doubt.create({title, body, userID: user.userID, topic, subtopic, roomID, doubtID });
+        const doubt = await Doubt.create({title, body, userID: user.userID, topic, subtopic, roomID, doubtID, image });
         res.status(200).json(doubt);
     }catch(error){
         console.log(error);
