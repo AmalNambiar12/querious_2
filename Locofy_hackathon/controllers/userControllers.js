@@ -3,7 +3,10 @@ const User = require('../models/userModel');
 const generateToken = require('../config/generateToken');
 
 const registerUser = asyncHandler (async (req, res) => {
-    const { username, password, userID} = req.body;
+    const { username, password } = req.body;
+    const filter = {};
+    const array = await User.find(filter);
+    const userID = array.length + 1;
 
     if (!username || !password){
         res.status(400);
