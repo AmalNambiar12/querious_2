@@ -186,13 +186,13 @@ router.get('/:roomID/filter', async (req, res) => {
     const roomID = req.params.roomID;
     const {query} = req.body;
     try{
-        let x = await Doubt.find({topic: query});
+        let x = await Doubt.find({topic: query, roomID});
         if (x.length == 0) {
-            x = await Doubt.find({subtopic: query});
+            x = await Doubt.find({subtopic: query, roomID});
             if (x.length == 0){
                 const user = await User.findOne({username: query});
                 const userID = user.userID;
-                x = await Doubt.find({userID});
+                x = await Doubt.find({userID, roomID});
                 res.status(200).json(x);
             }else{
                 res.status(200).json(x);
