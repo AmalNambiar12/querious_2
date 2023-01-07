@@ -6,7 +6,9 @@ const router = express.Router();
 router.get('/:roomID', async (req, res) =>{
     //get all doubts of a particular room
     const room = req.params.roomID;
+    const user = await User.find({username: req.body.username});
     try{
+        const starredDoubts = user.starredDoubts;
         const doubt = await Doubt.find({roomID: room});
         res.status(200).json(doubt);
     }catch (error){
@@ -122,4 +124,46 @@ router.put('/:roomID/starreddoubts/:username', async (req, res) => {
     }
 });
 
-module.exports = router
+router.get(':roomID/starredDoubts/:username', async (req, res) => {
+    //get the starred doubts of a particular room for a particular user
+    const username = req.params.username;
+    const user = await User.findOne({username});
+    const roomID = req.params.roomID;
+    try{
+        const x = user.starredDoubts;
+        const y = x.filter((item) => {
+            return item.roomID = roomID;
+        });
+        const z = [];
+        for (i=0; i < y.length; i++){
+            let doubt = await Doubt.findOne({roomID: y[i].roomID, doubtID: y[i].doubtID});
+            z.push(doubt);
+        }
+        res.status(200).json(z);
+    }catch (error){
+        res.status(400).json({error: error.msg});
+    }
+});
+
+router.get(':roomID/unstarreddoubts/:username', async (req, res) => {
+    //get the unstarred doubts in a room for a particular user
+    const username = req.params.username;
+    const user = await User.findOne({username});
+    const roomID = req.params.roomID;
+    try{
+        const x = user.starredDoubts;
+        const y = x.filter((item) => {
+            return !(item.roomID = roomID);
+        });
+        const z = [];
+        for (i=0; i < y.length; i++){
+            let doubt = await Doubt.findOne({roomID: y[i].roomID, doubtID: y[i].doubtID});
+            z.push(doubt);
+        }
+        res.status(200).json(z);
+    }catch (error){
+        res.status(400).json({error: error.msg});
+    }
+})
+
+module.exports = router;
