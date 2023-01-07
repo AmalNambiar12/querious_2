@@ -4,6 +4,9 @@ import styles from "./SolutionBox.module.css";
 import UploadWidget from "./UploadWidget";
 
 const SolutionBox = () => {
+
+  
+
   return (
     <div className={styles.solutionbox}>
       <TextField

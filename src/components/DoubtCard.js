@@ -1,16 +1,26 @@
 import Button from "../components/Button";
 import styles from "./DoubtCard.module.css";
 
+
 const DoubtCard = ({
   star,
+  roomID,
   doubtID,
   doubtTitle,
   doubtBody,
   doubtSenderName,
   doubtTimeStamp,
   doubtDetail,
+  buttonBarVisible
   }) => {
   
+  const backend = "http://localhost:5000";
+  
+  const starDoubt = () => {
+    // fix starring
+
+  };
+
   return (
     <div className={styles.doubtcard}>
       <div className={styles.doubtheader}>
@@ -26,7 +36,8 @@ const DoubtCard = ({
         </span>
       </p>
       <div className={styles.bottombar}>
-        <div className={styles.doubtbuttonbar}>
+        <div className={(buttonBarVisible ? styles.doubtbuttonbar : 
+           styles.doubtbuttonbar+" "+styles.buttonbarinvisible)}>
           <button className={styles.starbutton}>
             <img className={styles.starIcon} alt="" src={star} />
           </button>

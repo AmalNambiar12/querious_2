@@ -4,8 +4,39 @@ import RoomsPanel from "../components/RoomsPanel";
 import DoubtCard from "../components/DoubtCard";
 import SolutionBox from "../components/SolutionBox";
 import styles from "./SolutionPage.module.css";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const SolutionPage = () => {
+  const nav = useNavigate();
+
+  const [rooms, setRooms] = useState([
+    {
+      roomID: 1,
+      roomTitle: "Digital Design"
+    },
+    {
+      roomID: 2,
+      roomTitle: "OOP"
+    }
+  ]);
+
+  const navRoom = (x) => {
+    nav("/?room="+x.toString());
+  }
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("room") && urlParams.has("doubt")) {
+      const x = parseInt(urlParams.get("room"));
+      const y = parseInt(urlParams.get("doubt"));
+      
+    }
+    else {
+      // go back to login
+    }
+  }, []);
+
   return (
     <div className={styles.solutionpage}>
       <div className={styles.content}>
@@ -25,7 +56,7 @@ const SolutionPage = () => {
             <div className={styles.roomslist}>
               <div className={styles.rooms}>Rooms</div>
             </div>
-            <RoomsPanel />
+            <RoomsPanel rooms={rooms} navRoom={(x) => navRoom(x)}/>
           </div>
           <div className={styles.rightsidebar}>
             <div className={styles.doubtlist}>

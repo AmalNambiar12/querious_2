@@ -57,9 +57,6 @@ const AuthWidget = () => {
         console.log(error);
       }
     }
-    
-    
-    //await signup(u, p);
   };
 
   return (
@@ -69,7 +66,7 @@ const AuthWidget = () => {
         alt=""
         src="../companylogo@2x.png"
       />
-      <b className={styles.signUp}>Sign Up</b>
+      <b className={styles.signUp}>{isSignUp ? "Sign Up" : "Login"}</b>
       <div className={styles.usernamebox}>
         <span className={styles.username}>Username:</span>
         <input className={styles.usernamefield} id="userInput" type="text" />
@@ -82,7 +79,7 @@ const AuthWidget = () => {
       <button className={styles.signupbutton}>
         <div className={styles.signuptext}>Sign up</div>
       </button>
-      <span className={styles.redirect}>{isSignUp ? 'Already a member? Login here' : 'New user? Sign up here'}</span>
+      <span className={styles.redirect} onClick={() => setIsSignUp(!isSignUp)}>{isSignUp ? 'Already a member? Login here' : 'New user? Sign up here'}</span>
     </div>
   );
 };

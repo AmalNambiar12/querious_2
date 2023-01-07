@@ -25,8 +25,6 @@ const DoubtBox = () => {
   };
 
   const postDoubt = async () => {
-    alert("Doubt is about to be posted .. ");
-    
     let config = getToken();
     let d = new Date().toLocaleDateString();
     let t = new Date().toLocaleTimeString();

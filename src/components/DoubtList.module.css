@@ -8,6 +8,7 @@
   justify-content: flex-start;
   text-align: left;
   font-size: 12px;
+  gap: 5px;
   color: #000;
   font-family: Quicksand;
 }

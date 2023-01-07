@@ -13,7 +13,7 @@ const FilterField = ({
   handleChange
 }) => {
   let [inputValue, setInputValue] = useState('');
-
+  
   const titleFieldStyle = useMemo(() => {
     return {
       width: titleFieldWidth,
@@ -31,7 +31,7 @@ const FilterField = ({
         className={styles.filtertextbox}
         onChange={(e, newValue) => handleChange(newValue)}
         disablePortal
-        options={["ARRAU"]}
+        options={["ARRAU", "Default"]}
         renderInput={(params) => (
           <TextField
             {...params}
