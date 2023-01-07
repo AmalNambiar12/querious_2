@@ -47,42 +47,42 @@ router.post('/:roomID', async (req, res) => {
     }
 });
 
-router.get('/:roomID/filter1/:topic', async (req, res) => {
-    //filtering doubts based on topic
-    const room = req.params.roomID;
-    const topic = req.params.topic;
-    try{
-        const doubt = await Doubt.find({topic: topic, roomID: room});
-        res.status(200).json(doubt);
-    }catch(error){
-        res.status(400).json({error: error.msg});
-    }
-});
+// router.get('/:roomID/filter1/:topic', async (req, res) => {
+//     //filtering doubts based on topic
+//     const room = req.params.roomID;
+//     const topic = req.params.topic;
+//     try{
+//         const doubt = await Doubt.find({topic: topic, roomID: room});
+//         res.status(200).json(doubt);
+//     }catch(error){
+//         res.status(400).json({error: error.msg});
+//     }
+// });
 
-router.get('/:roomID/filter2/:subtopic', async (req, res) => {
-    //filtering doubts based on subtopic
-    const room = req.params.roomID;
-    const subtopic = req.params.subtopic;
-    try{
-        const doubt = await Doubt.find({subtopic: subtopic, roomID: room});
-        res.status(200).json(doubt);
-    }catch(error){
-        res.status(400).json({error: error.msg});
-    }
-});
+// router.get('/:roomID/filter2/:subtopic', async (req, res) => {
+//     //filtering doubts based on subtopic
+//     const room = req.params.roomID;
+//     const subtopic = req.params.subtopic;
+//     try{
+//         const doubt = await Doubt.find({subtopic: subtopic, roomID: room});
+//         res.status(200).json(doubt);
+//     }catch(error){
+//         res.status(400).json({error: error.msg});
+//     }
+// });
 
-router.get('/:roomID/filter3/:username', async (req, res) => {
-    //find all doubts in that room sent by a particular person
-    const roomID = req.params.roomID;
-    const username = req.params.username;
-    const user = await User.findOne({username});
-    try{
-        const doubts = await Doubt.find({userID: user.userID, roomID: roomID});
-        res.status(200).json(doubts);
-    }catch(error){
-        res.status(400).json({error: error.msg});
-    }
-});
+// router.get('/:roomID/filter3/:username', async (req, res) => {
+//     //find all doubts in that room sent by a particular person
+//     const roomID = req.params.roomID;
+//     const username = req.params.username;
+//     const user = await User.findOne({username});
+//     try{
+//         const doubts = await Doubt.find({userID: user.userID, roomID: roomID});
+//         res.status(200).json(doubts);
+//     }catch(error){
+//         res.status(400).json({error: error.msg});
+//     }
+// });
 
 router.get('/:roomID/search/:title', async (req, res) => {
     //searching the title of doubts in the search bar
@@ -181,5 +181,28 @@ router.get(':roomID/starredDoubts/:username', async (req, res) => {
 //         res.status(400).json({error: error.msg});
 //     }
 // })
+
+router.get('/:roomID/filter', async (req, res) => {
+    const roomID = req.params.roomID;
+    const {query} = req.body;
+    try{
+        let x = await Doubt.find({topic: query});
+        if (x.length == 0) {
+            x = await Doubt.find({subtopic: query});
+            if (x.length == 0){
+                const user = await User.findOne({username: query});
+                const userID = user.userID;
+                x = await Doubt.find({userID});
+                res.status(200).json(x);
+            }else{
+                res.status(200).json(x);
+            }
+        }else{
+            res.status(200).json(x);
+        }
+    }catch(error){
+        res.status(400).json({error: error.msg});
+    }
+})
 
 module.exports = router;
