@@ -4,7 +4,6 @@ import styles from "./FiltersPanel.module.css";
 import { useState } from "react";
 
 const FiltersPanel = ( {applyFilter} ) => {
-  const backend = "http://localhost:5000";
   const [senderFieldValue, setSenderFieldValue] = useState(null);
   const [topicFieldValue, setTopicFieldValue] = useState(null);
   const [subtopicFieldValue, setSubtopicFieldValue] = useState(null);

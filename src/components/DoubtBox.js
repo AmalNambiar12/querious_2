@@ -6,7 +6,7 @@ import styles from "./DoubtBox.module.css";
 import { useState } from "react";
 
 const DoubtBox = () => {
-  const backend = "http://localhost:5000";
+  const backend = "querious2.amalanilkumar2.repl.co";//"http://localhost:5000";
   const [titleFieldValue, setTitleFieldValue] = useState(null);
   const [topicFieldValue, setTopicFieldValue] = useState(null);
   const [subtopicFieldValue, setSubtopicFieldValue] = useState(null);

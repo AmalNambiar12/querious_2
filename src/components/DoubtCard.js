@@ -14,7 +14,7 @@ const DoubtCard = ({
   buttonBarVisible
   }) => {
   
-  const backend = "http://localhost:5000";
+  const backend = "querious2.amalanilkumar2.repl.co";//"http://localhost:5000";
   
   const starDoubt = () => {
     // fix starring

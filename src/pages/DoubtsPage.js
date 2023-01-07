@@ -10,7 +10,7 @@ import styles from "./DoubtsPage.module.css";
 import { useState, useEffect } from "react";
 
 const DoubtsPage = () => {
-  const backend = "http://localhost:5000";
+  const backend = "querious2.amalanilkumar2.repl.co";//"http://localhost:5000";
   const [postState, setPostState] = useState(false);
   const [currentRoom, setCurrentRoom] = useState(1);
   const [currentRoomName, setCurrentRoomName] = useState("Current Room HA!");
