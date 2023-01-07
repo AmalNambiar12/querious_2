@@ -4,7 +4,7 @@ const User = require('../models/userModel');
 const router = express.Router();
 
 router.get('/:roomID/unstarreddoubts/:username', async (req, res) =>{
-    //get all doubts of a particular room
+    //get unstarred doubts of a particular room
     const room = req.params.roomID;
     const user = await User.find({username: req.params.username});
     try{
