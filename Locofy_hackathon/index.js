@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-require('dotenv').config();
+//require('dotenv').config();
+const path = require("path");
+require('dotenv').config({path: path.resolve(__dirname, './.env') });
 const mongoose = require('mongoose');
 const doubtsroutes = require('./routes/doubts');
 const solutionsroutes = require('./routes/solutions');
