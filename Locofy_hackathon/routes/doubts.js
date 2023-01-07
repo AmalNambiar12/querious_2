@@ -198,27 +198,33 @@ router.get('/:roomID/starredDoubts/:username', async (req, res) => {
 //     }
 // })
 
-router.get('/:roomID/filter', async (req, res) => {
-    const roomID = req.params.roomID;
-    const {query} = req.body;
-    try{
-        let x = await Doubt.find({topic: query, roomID});
-        if (x.length == 0) {
-            x = await Doubt.find({subtopic: query, roomID});
-            if (x.length == 0){
-                const user = await User.findOne({username: query});
-                const userID = user.userID;
-                x = await Doubt.find({userID, roomID});
-                res.status(200).json(x);
-            }else{
-                res.status(200).json(x);
-            }
-        }else{
-            res.status(200).json(x);
-        }
-    }catch(error){
-        res.status(400).json({error: error.msg});
-    }
-})
+// router.get('/:roomID/filter', async (req, res) => {
+//     const roomID = req.params.roomID;
+//     const {query} = req.body.query;
+//     try{
+//         let x = await Doubt.find({topic: query, roomID});
+//         if (!x) {
+//             x = await Doubt.find({subtopic: query, roomID});
+//             if (!x){
+//                 const user = await User.findOne({username: query});
+//                 const userID = user.userID;
+//                 x = await Doubt.find({userID, roomID});
+//                 if(x){
+//                     res.status(200).json(x);
+//                 }else{
+//                     res.send('No results found.');
+//                 }
+                
+//             }else{
+//                 res.status(200).json(x);
+//             }
+//         }else{
+//             res.status(200).json(x);
+//         }
+//     }catch(error){
+//         res.status(400).json({error: error.msg});
+//         console.log(error);
+//     }
+// })
 
 module.exports = router;
